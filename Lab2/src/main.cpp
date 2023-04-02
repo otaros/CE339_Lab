@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <AHT20.h>
-
 AHT20 aht;
 
 int freq = 1;
@@ -10,7 +9,7 @@ float hum, temp;
 void setup()
 {
   // put your setup code here, to run once:
-  Wire.setPins(4, 5);
+  Serial.begin(115200);
   aht.begin();
   ledcSetup(channel, freq, resolution);
 
@@ -21,6 +20,7 @@ void loop()
 {
   // put your main code here, to run repeatedly:
   aht.getTemperatureAndHumidity(&temp, &hum);
+  Serial.println(temp);
   if (temp <= 31)
   {
     ledcWrite(channel, 64);

@@ -10,6 +10,8 @@
             "includePath": [
                 "c:/Users/ADMIN/workspace/CE339_Lab/Lab2/include",
                 "c:/Users/ADMIN/workspace/CE339_Lab/Lab2/src",
+                "c:/Users/ADMIN/workspace/CE339_Lab/Lab2/lib/AHT20",
+                "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                 "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                 "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                 "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
@@ -201,7 +203,6 @@
                 "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/dio_qspi/include",
                 "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/cores/esp32",
                 "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/variants/d1_uno32",
-                "c:/Users/ADMIN/workspace/CE339_Lab/Lab2/lib/AHT20",
                 "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                 "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                 "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src",
@@ -234,7 +235,6 @@
                 "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                 "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                 "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
-                "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                 ""
             ],
             "browse": {
@@ -242,6 +242,8 @@
                 "path": [
                     "c:/Users/ADMIN/workspace/CE339_Lab/Lab2/include",
                     "c:/Users/ADMIN/workspace/CE339_Lab/Lab2/src",
+                    "c:/Users/ADMIN/workspace/CE339_Lab/Lab2/lib/AHT20",
+                    "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                     "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                     "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                     "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
@@ -433,7 +435,6 @@
                     "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/dio_qspi/include",
                     "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/cores/esp32",
                     "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/variants/d1_uno32",
-                    "c:/Users/ADMIN/workspace/CE339_Lab/Lab2/lib/AHT20",
                     "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                     "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                     "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src",
@@ -466,7 +467,6 @@
                     "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                     "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                     "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
-                    "C:/Users/ADMIN/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                     ""
                 ]
             },
