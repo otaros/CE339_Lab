@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Display Data</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+      @import url("https://fonts.cdnfonts.com/css/sf-pro-display");
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #d2e9e9;
+        box-sizing: border-box;
+        margin: 20px auto;
+      }
+
+      .title {
+        font-family: "SF Pro Display", sans-serif;
+        font-size: 20px;
+        background: #4a30cf;
+        background: linear-gradient(to top, #4a30cf 0%, #cf1d23 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+        font-weight: bolder;
+        text-transform: uppercase;
+      }
+
+      .content {
+        background-color: white;
+        text-align: left;
+        margin: 0 20px;
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      ul {
+        list-style-type: none;
+      }
+
+      .chart {
+        display: inline-block;
+        width: 100%;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        box-sizing: border-box;
+      }
+
+      .chart-container {
+        display: grid;
+        margin: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="title">
+      <h1>Hệ Thống Giám Sát Nhiệt Độ Và Độ Ẩm</h1>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart">
+        <canvas id="tempChart1"></canvas>
+      </div>
+      <div class="chart">
+        <canvas id="humChart1"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart">
+        <canvas id="tempChart2"></canvas>
+      </div>
+      <div class="chart">
+        <canvas id="humChart2"></canvas>
+      </div>
+    </div>
+
+    <div class="content">
+      <h2>Giảng viên hướng dẫn: Nguyễn Duy Xuân Bách</h2>
+      <h3>Sinh viên thực hiện: nhóm 7</h3>
+
+      <ul>
+        <li>Trương Hữu Khang</li>
+        <li>Nguyễn Linh Anh Khoa</li>
+        <li>Phan Duy Thông</li>
+      </ul>
+    </div>
+
+    <script>
+      var tempCtx1 = document.getElementById("tempChart1").getContext("2d");
+      var tempChart1 = new Chart(tempCtx1, {
+        type: "line",
+        data: {
+          labels: [],
+          datasets: [
+            {
+              label: "Temperature",
+              data: [],
+              backgroundColor: "rgba(255, 99, 132, 0.2)",
+              borderColor: "rgba(255, 99, 132, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                },
+              },
+            ],
+          },
+        },
+      });
+
+      var humCtx1 = document.getElementById("humChart1").getContext("2d");
+      var humChart1 = new Chart(humCtx1, {
+        type: "line",
+        data: {
+          labels: [],
+          datasets: [
+            {
+              label: "Humidity",
+              data: [],
+              backgroundColor: "rgba(54, 162, 235, 0.2)",
+              borderColor: "rgba(54, 162, 235, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                },
+              },
+            ],
+          },
+        },
+      });
+
+      var tempCtx2 = document.getElementById("tempChart2").getContext("2d");
+      var tempChart2 = new Chart(tempCtx2, {
+        type: "line",
+        data: {
+          labels: [],
+          datasets: [
+            {
+              label: "Temperature",
+              data: [],
+              backgroundColor: "rgba(255, 99, 132, 0.2)",
+              borderColor: "rgba(255, 99, 132, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                },
+              },
+            ],
+          },
+        },
+      });
+
+      var humCtx2 = document.getElementById("humChart2").getContext("2d");
+      var humChart2 = new Chart(humCtx2, {
+        type: "line",
+        data: {
+          labels: [],
+          datasets: [
+            {
+              label: "Humidity",
+              data: [],
+              backgroundColor: "rgba(54, 162, 235, 0.2)",
+              borderColor: "rgba(54, 162, 235, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                },
+              },
+            ],
+          },
+        },
+      });
+      $(document).ready(function () {
+        // Define a variable to keep track of the number of data points
+        var numDataPoints = 0;
+
+        // Gọi API để lấy dữ liệu nhiệt độ và độ ẩm mới nhất
+        $.getJSON("/api/data", function (data) {
+          // Cập nhật dữ liệu lên biểu đồ1
+          tempChart1.data.labels.push(new Date().toLocaleTimeString());
+          tempChart1.data.datasets[0].data.push(data.temperature1);
+          tempChart1.update();
+
+          humChart1.data.labels.push(new Date().toLocaleTimeString());
+          humChart1.data.datasets[0].data.push(data.humidity1);
+          humChart1.update();
+
+          tempChart2.data.labels.push(new Date().toLocaleTimeString());
+          tempChart2.data.datasets[0].data.push(data.temperature2);
+          tempChart2.update();
+
+          humChart2.data.labels.push(new Date().toLocaleTimeString());
+          humChart2.data.datasets[0].data.push(data.humidity2);
+          humChart2.update();
+
+          // Increment the number of data points
+          numDataPoints++;
+        });
+
+        // Cập nhật dữ liệu mỗi 10 giây
+        setInterval(function () {
+          $.getJSON("/api/data", function (data) {
+            // Cập nhật dữ liệu của biểu đồ1
+            tempChart1.data.labels.push(new Date().toLocaleTimeString());
+            tempChart1.data.datasets[0].data.push(data.temperature1);
+            if (tempChart1.data.labels.length > 20) {
+              // Xóa điểm dữ liệu cũ nếu số lượng điểm vượt quá 20
+              tempChart1.data.labels.shift();
+              tempChart1.data.datasets[0].data.shift();
+            }
+            tempChart1.update();
+
+            humChart1.data.labels.push(new Date().toLocaleTimeString());
+            humChart1.data.datasets[0].data.push(data.humidity1);
+            if (humChart1.data.labels.length > 20) {
+              humChart1.data.labels.shift();
+              humChart1.data.datasets[0].data.shift();
+            }
+            humChart1.update();
+
+            // Cập nhật dữ liệu của biểu đồ2
+            tempChart2.data.labels.push(new Date().toLocaleTimeString());
+            tempChart2.data.datasets[0].data.push(data.temperature2);
+            if (tempChart2.data.labels.length > 20) {
+              tempChart2.data.labels.shift();
+              tempChart2.data.datasets[0].data.shift();
+            }
+            tempChart2.update();
+
+            humChart2.data.labels.push(new Date().toLocaleTimeString());
+            humChart2.data.datasets[0].data.push(data.humidity2);
+            if (humChart2.data.labels.length > 20) {
+              humChart2.data.labels.shift();
+              humChart2.data.datasets[0].data.shift();
+            }
+            humChart2.update();
+
+            // Increment the number of data points
+            numDataPoints++;
+          });
+        }, 2000);
+      });
+    </script>
+  </body>
+</html>
